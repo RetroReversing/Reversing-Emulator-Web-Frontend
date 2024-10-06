@@ -1,4 +1,4 @@
-name: Github pages JunieRR
+name: Github pages
 on:
     push:
         branches:
@@ -6,7 +6,7 @@ on:
 
 jobs:
     deploy:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
 
@@ -14,6 +14,13 @@ jobs:
           uses: actions/setup-node@v2-beta
           with:
             node-version: '12'
+        - name: Cache Node.js modules
+          uses: actions/cache@v3
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
         - run: npm install
         - run: npm run build
           env:
