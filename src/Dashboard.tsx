@@ -2,7 +2,6 @@ import { useState } from "react"
 
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
 import { TreeViewPanel } from "./panels/TreeViewPanel"
-import { APIPanel } from "./panels/APIPanel"
 import { GamePanel } from "./panels/GamePanel"
 import { SettingsPanel } from "./panels/SettingsPanel"
 import { EmulatorHeader } from "./EmulatorHeader"
@@ -23,10 +22,9 @@ export function Dashboard() {
         <main className="flex-1 overflow-auto">
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={25} minSize={20} maxSize={40}>
+              {activePanel === 'game' && <GamePanel />}
               {activePanel === 'treeview' && <TreeViewPanel />}
               {activePanel === 'settings' && <SettingsPanel />}
-              {activePanel === 'models' && <GamePanel />}
-              {activePanel === 'api' && <APIPanel />}
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel>

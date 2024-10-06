@@ -1,17 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Upload } from 'lucide-react'
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
-import { Paperclip, Mic, CornerDownLeft } from "lucide-react"
 import { ChatSection } from './MainSections/ChatSection'
 
 export function MainContentArea() {

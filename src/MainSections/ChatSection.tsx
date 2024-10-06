@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Paperclip, Mic, CornerDownLeft, Bot, User } from "lucide-react"
+import { CornerDownLeft, Bot, User } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface ChatMessage {

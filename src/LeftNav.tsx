@@ -1,9 +1,14 @@
 import { Tooltip, TooltipTrigger, TooltipContent } from "@radix-ui/react-tooltip";
-import { Triangle, SquareTerminal, Bot, Code2, Book, Settings2, LifeBuoy, SquareUser, LucideIceCreamCone } from "lucide-react";
+import { Triangle, SquareTerminal, Bot, Settings2 } from "lucide-react";
 import { Button } from "./components/ui/button";
 import { TooltipProvider } from "./components/ui/tooltip";
 
-export function LeftNav({ activePanel, setActivePanel }) {
+interface LeftNavProps {
+  activePanel: string;
+  setActivePanel: (s: string)=>void;
+}
+
+export function LeftNav({ activePanel, setActivePanel }: LeftNavProps) {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 flex h-full flex-col border-r">
       <div className="border-b p-2">
@@ -13,6 +18,25 @@ export function LeftNav({ activePanel, setActivePanel }) {
       </div>
       <nav className="grid gap-1 p-2">
       <TooltipProvider>
+
+      <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`rounded-lg ${activePanel === 'game' ? 'bg-muted' : ''}`}
+              aria-label="Game"
+              onClick={() => setActivePanel('game')}
+            >
+              <Bot className="size-5" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="right" sideOffset={5}>
+            Game
+          </TooltipContent>
+        </Tooltip>
+
+
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -26,56 +50,11 @@ export function LeftNav({ activePanel, setActivePanel }) {
             </Button>
           </TooltipTrigger>
           <TooltipContent side="right" sideOffset={5}>
-            Tree View
+            Source Code
           </TooltipContent>
         </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`rounded-lg ${activePanel === 'models' ? 'bg-muted' : ''}`}
-              aria-label="Models"
-              onClick={() => setActivePanel('models')}
-            >
-              <Bot className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Models
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`rounded-lg ${activePanel === 'api' ? 'bg-muted' : ''}`}
-              aria-label="API"
-              onClick={() => setActivePanel('api')}
-            >
-              <Code2 className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            API
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-lg"
-              aria-label="Documentation"
-            >
-              <Book className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Documentation
-          </TooltipContent>
-        </Tooltip>
+
+        
         <Tooltip>
           <TooltipTrigger asChild>
             <Button

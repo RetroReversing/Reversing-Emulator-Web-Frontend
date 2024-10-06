@@ -1,4 +1,3 @@
-import React from 'react'
 import { Play, Gamepad2, Upload } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
